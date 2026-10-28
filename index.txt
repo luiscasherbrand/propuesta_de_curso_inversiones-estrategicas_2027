@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capital en Ladrillos 2027 | Constructora Dos Uno</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.19/index.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.16/index.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.0.18/index.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#0a0a0a;
+    --bg-2:#111111;
+    --bg-3:#1a1a1a;
+    --gold:#c9a961;
+    --gold-soft:#e4d4a8;
+    --gold-deep:#8b7340;
+    --text:#e8e6e1;
+    --text-dim:#9a958c;
+    --text-mute:#6b665e;
+    --line:#2a2825;
+    --green:#4ade80;
+    --red:#ef4444;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600;letter-spacing:-0.02em}
+  .mono{font-family:'JetBrains Mono',monospace}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(10,10,10,0.85);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--line);
+    padding:18px 40px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .logo{
+    font-family:'Playfair Display',serif;
+    font-size:20px;
+    color:var(--gold);
+    letter-spacing:0.15em;
+    font-weight:600;
+  }
+  .logo span{color:var(--text-dim);font-weight:300}
+  .nav-links{display:flex;gap:32px;list-style:none}
+  .nav-links a{
+    color:var(--text-dim);text-decoration:none;font-size:13px;
+    letter-spacing:0.1em;text-transform:uppercase;
+    transition:color 0.3s;
+  }
+  .nav-links a:hover{color:var(--gold)}
+  .nav-cta{
+    background:var(--gold);color:#000;padding:10px 22px;
+    font-size:12px;letter-spacing:0.15em;text-transform:uppercase;
+    text-decoration:none;font-weight:600;
+    transition:all 0.3s;
+  }
+  .nav-cta:hover{background:var(--gold-soft)}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    padding:140px 40px 80px;
+    display:flex;flex-direction:column;justify-content:center;
+    position:relative;
+    background:
+      radial-gradient(ellipse at top right, rgba(201,169,97,0.08), transparent 50%),
+      radial-gradient(ellipse at bottom left, rgba(201,169,97,0.05), transparent 50%),
+      var(--bg);
+  }
+  .hero-tag{
+    display:inline-flex;align-items:center;gap:12px;
+    color:var(--gold);font-size:12px;letter-spacing:0.3em;
+    text-transform:uppercase;margin-bottom:30px;
+  }
+  .hero-tag::before{content:'';width:40px;height:1px;background:var(--gold)}
+  .hero h1{
+    font-size:clamp(48px,8vw,110px);
+    line-height:0.95;
+    margin-bottom:30px;
+    max-width:1100px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold);
+    font-weight:400;
+  }
+  .hero-sub{
+    font-size:20px;color:var(--text-dim);
+    max-width:700px;margin-bottom:50px;
+    line-height:1.5;
+  }
+  .hero-stats{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:40px;max-width:1100px;
+    padding-top:50px;border-top:1px solid var(--line);
+  }
+  .stat-num{
+    font-family:'Playfair Display',serif;
+    font-size:48px;color:var(--gold);
+    line-height:1;margin-bottom:8px;
+  }
+  .stat-label{
+    font-size:12px;color:var(--text-dim);
+    letter-spacing:0.15em;text-transform:uppercase;
+  }
+
+  /* SECTIONS */
+  section{padding:120px 40px;position:relative}
+  .container{max-width:1300px;margin:0 auto}
+  .section-tag{
+    color:var(--gold);font-size:12px;letter-spacing:0.3em;
+    text-transform:uppercase;margin-bottom:20px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .section-tag::before{content:'';width:30px;height:1px;background:var(--gold)}
+  .section-title{
+    font-size:clamp(36px,5vw,64px);
+    line-height:1.05;margin-bottom:30px;
+    max-width:900px;
+  }
+  .section-title em{color:var(--gold);font-style:italic;font-weight:400}
+  .section-intro{
+    font-size:18px;color:var(--text-dim);
+    max-width:750px;margin-bottom:60px;
+    line-height:1.7;
+  }
+
+  /* PROBLEM GRID */
+  .problem-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:2px;background:var(--line);
+    border:1px solid var(--line);
+  }
+  .problem-card{
+    background:var(--bg-2);padding:45px 35px;
+    transition:background 0.4s;
+  }
+  .problem-card:hover{background:var(--bg-3)}
+  .problem-num{
+    font-family:'Playfair Display',serif;
+    font-size:14px;color:var(--gold);
+    letter-spacing:0.2em;margin-bottom:20px;
+  }
+  .problem-card h3{
+    font-size:24px;margin-bottom:15px;line-height:1.2;
+  }
+  .problem-card p{color:var(--text-dim);font-size:15px;line-height:1.7}
+
+  /* COMPARISON TABLE */
+  .compare{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:30px;margin-top:60px;
+  }
+  .compare-col{
+    border:1px solid var(--line);
+    background:var(--bg-2);
+    padding:40px;
+    position:relative;
+  }
+  .compare-col.bad{border-color:rgba(239,68,68,0.3)}
+  .compare-col.good{
+    border-color:rgba(201,169,97,0.4);
+    background:linear-gradient(135deg,rgba(201,169,97,0.05),transparent);
+  }
+  .compare-header{
+    font-size:12px;letter-spacing:0.25em;text-transform:uppercase;
+    color:var(--text-dim);margin-bottom:15px;
+  }
+  .compare-col.good .compare-header{color:var(--gold)}
+  .compare-title{
+    font-family:'Playfair Display',serif;
+    font-size:28px;margin-bottom:30px;line-height:1.2;
+  }
+  .compare-row{
+    display:flex;justify-content:space-between;
+    padding:15px 0;border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .compare-row:last-child{border-bottom:none}
+  .compare-row .label{color:var(--text-dim)}
+  .compare-row .value{font-family:'JetBrains Mono',monospace;font-weight:600}
+  .compare-row .value.neg{color:var(--red)}
+  .compare-row .value.pos{color:var(--green)}
+  .compare-total{
+    margin-top:25px;padding-top:25px;
+    border-top:2px solid var(--line);
+  }
+  .compare-total .label{
+    font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--text-dim);margin-bottom:8px;
+  }
+  .compare-total .value{
+    font-family:'Playfair Display',serif;
+    font-size:42px;line-height:1;
+  }
+  .compare-col.good .compare-total .value{color:var(--gold)}
+
+  /* MODULES */
+  .modules{display:flex;flex-direction:column;gap:80px;margin-top:60px}
+  .module{
+    display:grid;grid-template-columns:300px 1fr;
+    gap:60px;padding-bottom:80px;
+    border-bottom:1px solid var(--line);
+  }
+  .module:last-child{border-bottom:none;padding-bottom:0}
+  .module-meta{position:sticky;top:120px;align-self:start}
+  .module-time{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;color:var(--gold);
+    margin-bottom:15px;letter-spacing:0.1em;
+  }
+  .module-num{
+    font-family:'Playfair Display',serif;
+    font-size:72px;color:var(--gold);
+    line-height:1;margin-bottom:15px;
+    font-weight:400;font-style:italic;
+  }
+  .module-title{
+    font-size:28px;line-height:1.2;margin-bottom:20px;
+  }
+  .module-desc{color:var(--text-dim);font-size:14px;line-height:1.7}
+  .dialogue{
+    background:var(--bg-2);
+    border-left:3px solid var(--gold);
+    padding:35px 40px;
+    margin-top:30px;
+    position:relative;
+  }
+  .dialogue::before{
+    content:'"';
+    position:absolute;top:-20px;left:20px;
+    font-family:'Playfair Display',serif;
+    font-size:100px;color:var(--gold);
+    opacity:0.3;line-height:1;
+  }
+  .dialogue p{
+    font-size:17px;line-height:1.8;
+    color:var(--text);
+    font-style:italic;
+    position:relative;z-index:1;
+  }
+  .dialogue strong{color:var(--gold);font-style:normal;font-weight:600}
+  .dialogue .speaker{
+    display:block;margin-bottom:15px;
+    font-size:11px;letter-spacing:0.25em;text-transform:uppercase;
+    color:var(--gold);font-style:normal;
+  }
+
+  /* FISCAL */
+  .fiscal-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:25px;margin-top:60px;
+  }
+  .fiscal-card{
+    background:var(--bg-2);
+    border:1px solid var(--line);
+    padding:35px;
+    transition:all 0.4s;
+  }
+  .fiscal-card:hover{
+    border-color:var(--gold);
+    transform:translateY(-4px);
+  }
+  .fiscal-icon{
+    font-family:'Playfair Display',serif;
+    font-size:42px;color:var(--gold);
+    margin-bottom:20px;font-style:italic;
+  }
+  .fiscal-card h4{
+    font-size:20px;margin-bottom:15px;line-height:1.3;
+  }
+  .fiscal-card p{color:var(--text-dim);font-size:14px;line-height:1.7;margin-bottom:15px}
+  .fiscal-card .tag{
+    display:inline-block;
+    background:rgba(201,169,97,0.1);
+    color:var(--gold);
+    padding:4px 12px;font-size:11px;
+    letter-spacing:0.15em;text-transform:uppercase;
+  }
+
+  /* SAT TABLE */
+  .sat-table{
+    width:100%;margin-top:40px;
+    border-collapse:collapse;
+    background:var(--bg-2);
+    border:1px solid var(--line);
+  }
+  .sat-table th{
+    background:var(--bg-3);
+    padding:18px 20px;text-align:left;
+    font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--gold);font-weight:500;
+    border-bottom:1px solid var(--line);
+  }
+  .sat-table td{
+    padding:20px;border-bottom:1px solid var(--line);
+    font-size:14px;vertical-align:top;
+  }
+  .sat-table tr:last-child td{border-bottom:none}
+  .sat-table .phase{color:var(--gold);font-weight:600;font-size:13px}
+  .sat-table code{
+    background:var(--bg-3);padding:3px 8px;
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    color:var(--gold-soft);border-radius:3px;
+  }
+  .sat-table .desc{color:var(--text-dim);font-size:13px;line-height:1.6}
+
+  /* FILTER */
+  .filter-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:30px;margin-top:60px;
+  }
+  .filter-card{
+    background:var(--bg-2);
+    border:1px solid var(--line);
+    padding:45px;
+    position:relative;
+    overflow:hidden;
+  }
+  .filter-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;
+    height:3px;background:var(--gold);
+  }
+  .filter-profile{
+    font-size:11px;letter-spacing:0.25em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:20px;
+  }
+  .filter-card h3{
+    font-size:26px;margin-bottom:20px;line-height:1.2;
+  }
+  .filter-card p{color:var(--text-dim);margin-bottom:25px;line-height:1.7}
+  .filter-list{list-style:none}
+  .filter-list li{
+    padding:12px 0;border-bottom:1px solid var(--line);
+    font-size:14px;display:flex;gap:12px;
+  }
+  .filter-list li:last-child{border-bottom:none}
+  .filter-list li::before{
+    content:'→';color:var(--gold);flex-shrink:0;
+  }
+
+  /* RESULTS */
+  .results-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:25px;margin-top:60px;
+  }
+  .result-card{
+    padding:35px 30px;
+    border:1px solid var(--line);
+    background:var(--bg-2);
+    position:relative;
+  }
+  .result-num{
+    font-family:'Playfair Display',serif;
+    font-size:60px;color:var(--gold);
+    line-height:1;margin-bottom:15px;
+    font-style:italic;
+  }
+  .result-card h4{
+    font-size:18px;margin-bottom:12px;line-height:1.3;
+  }
+  .result-card p{color:var(--text-dim);font-size:13px;line-height:1.7}
+
+  /* CLOSING */
+  .closing{
+    background:
+      radial-gradient(ellipse at center, rgba(201,169,97,0.1), transparent 70%),
+      var(--bg);
+    padding:140px 40px;
+    text-align:center;
+  }
+  .closing h2{
+    font-size:clamp(40px,6vw,80px);
+    line-height:1;margin-bottom:30px;
+    max-width:1000px;margin-left:auto;margin-right:auto;
+  }
+  .closing h2 em{color:var(--gold);font-style:italic;font-weight:400}
+  .closing p{
+    font-size:18px;color:var(--text-dim);
+    max-width:650px;margin:0 auto 50px;
+  }
+  .closing-cta{
+    display:inline-block;
+    background:var(--gold);color:#000;
+    padding:20px 50px;
+    font-size:13px;letter-spacing:0.2em;text-transform:uppercase;
+    font-weight:600;text-decoration:none;
+    transition:all 0.3s;
+  }
+  .closing-cta:hover{background:var(--gold-soft);transform:translateY(-2px)}
+
+  /* FOOTER */
+  footer{
+    padding:60px 40px 40px;
+    border-top:1px solid var(--line);
+    text-align:center;
+  }
+  footer .logo{font-size:24px;margin-bottom:20px}
+  footer p{color:var(--text-mute);font-size:12px;letter-spacing:0.15em;text-transform:uppercase}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){
+    nav{padding:15px 20px}
+    .nav-links{display:none}
+    section{padding:80px 20px}
+    .hero{padding:120px 20px 60px}
+    .hero-stats{grid-template-columns:repeat(2,1fr);gap:25px}
+    .problem-grid,.fiscal-grid,.results-grid{grid-template-columns:1fr}
+    .compare,.filter-grid{grid-template-columns:1fr}
+    .module{grid-template-columns:1fr;gap:30px}
+    .module-meta{position:static}
+    .dialogue{padding:25px}
+    .stat-num{font-size:36px}
+  }
+
+  /* ANIMATIONS */
+  .reveal{opacity:0;transform:translateY(30px);transition:all 0.8s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">DOS UNO <span>/ CAPITAL</span></div>
+  <ul class="nav-links">
+    <li><a href="#problema">El Problema</a></li>
+    <li><a href="#solucion">La Solución</a></li>
+    <li><a href="#curso">El Curso</a></li>
+    <li><a href="#fiscal">Fiscal</a></li>
+    <li><a href="#filtro">Filtros</a></li>
+    <li><a href="#resultados">Resultados</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Solicitar Acceso</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Masterclass Privada · Edición 2027</div>
+  <h1>Capital en <em>Ladrillos.</em><br>Tu dinero trabajando<br>en patrimonio real.</h1>
+  <p class="hero-sub">Cómo altos directivos y dueños de negocio en Jalisco están convirtiendo excedentes fiscales en activos residenciales premium, sin tocar la obra, sin riesgo laboral y con blindaje legal total.</p>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">30%</div>
+      <div class="stat-label">ISR Corporativo que se evita</div>
+    </div>
+    <div>
+      <div class="stat-num">35%</div>
+      <div class="stat-label">Retorno neto por proyecto</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Operación manos libres</div>
+    </div>
+    <div>
+      <div class="stat-num">2026</div>
+      <div class="stat-label">Precios congelados</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section id="problema">
+  <div class="container">
+    <div class="section-tag">01 · El Diagnóstico</div>
+    <h2 class="section-title">Tu empresa genera utilidades. <em>El SAT se queda con una parte enorme.</em></h2>
+    <p class="section-intro">Mientras el dinero permanece en cuentas bancarias o pagarés tradicionales, la inflación real licúa su valor mes con mes. Al cierre del ejercicio fiscal, hasta el 30% del esfuerzo operativo se disuelve en impuestos. Este es el problema silencioso que ningún contador tradicional resuelve.</p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-num">— 01</div>
+        <h3>El Dinero Atrapado</h3>
+        <p>Utilidades operativas que pagan ISR corporativo al 30%. Si se retiran como dividendos, pagan otro 10% adicional. El capital se evapora entre impuestos y rendimientos bancarios inferiores a la inflación.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">— 02</div>
+        <h3>La Tierra Muerta</h3>
+        <p>Tener un terreno baldío por 5 años no es un negocio: es perder dinero frente a la inflación real de la construcción. Los insumos suben al doble que la plusvalía pasiva del lote.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">— 03</div>
+        <h3>El Miedo a Construir</h3>
+        <p>Sindicatos, permisos municipales, auditorías del IMSS (SIROC/SATIC), albañiles, proveedores. El empresario huye de la construcción porque la asocia con problemas que le quitan foco de su empresa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUCION -->
+<section id="solucion" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-tag">02 · La Solución</div>
+    <h2 class="section-title">Dejar de vender metros cuadrados. <em>Empezar a vender rendimientos financieros.</em></h2>
+    <p class="section-intro">Constructora Dos Uno no es una contratista. Es tu brazo operativo estratégico. Tú pones el capital, nosotros ponemos el know-how, el proyecto y los ladrillos. Tú solo firmas y cobras la utilidad.</p>
+
+    <div class="compare">
+      <div class="compare-col bad">
+        <div class="compare-header">Escenario A · Sin Estrategia</div>
+        <div class="compare-title">Dejar el dinero en tu empresa</div>
+        <div class="compare-row"><span class="label">Excedente Bruto</span><span class="value">$5,000,000</span></div>
+        <div class="compare-row"><span class="label">ISR Corporativo (30%)</span><span class="value neg">-$1,500,000</span></div>
+        <div class="compare-row"><span class="label">Impuesto Dividendos (10%)</span><span class="value neg">-$350,000</span></div>
+        <div class="compare-row"><span class="label">Rendimiento Bancario (5%)</span><span class="value">+$157,500</span></div>
+        <div class="compare-total">
+          <div class="label">Patrimonio Neto Final</div>
+          <div class="value neg">$3,307,500</div>
+        </div>
+      </div>
+
+      <div class="compare-col good">
+        <div class="compare-header">Escenario B · Escudo Fiscal Dos Uno</div>
+        <div class="compare-title">Mover el capital a la obra</div>
+        <div class="compare-row"><span class="label">Excedente Bruto</span><span class="value">$5,000,000</span></div>
+        <div class="compare-row"><span class="label">ISR Corporativo</span><span class="value pos">$0</span></div>
+        <div class="compare-row"><span class="label">Impuesto Dividendos</span><span class="value pos">$0</span></div>
+        <div class="compare-row"><span class="label">Margen Reventa (25%)</span><span class="value pos">+$1,250,000</span></div>
+        <div class="compare-total">
+          <div class="label">Patrimonio Neto Final</div>
+          <div class="value pos">$6,250,000</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURSO / DIÁLOGOS -->
+<section id="curso">
+  <div class="container">
+    <div class="section-tag">03 · El Curso Completo</div>
+    <h2 class="section-title">Masterclass Magna: <em>Ingeniería Inmobiliaria 2027</em></h2>
+    <p class="section-intro">Sesión privada de 60 minutos diseñada para directores generales y dueños de negocio con excedentes de liquidez. Lenguaje 100% financiero y corporativo, cero tecnicismos de obra. Estos son los diálogos exactos que se dictarán en cada bloque.</p>
+
+    <div class="modules">
+
+      <!-- MÓDULO 1 -->
+      <div class="module">
+        <div class="module-meta">
+          <div class="module-time">00:00 — 05:00</div>
+          <div class="module-num">I</div>
+          <h3 class="module-title">Apertura y Validación del Problema</h3>
+          <p class="module-desc">Posicionamiento de confianza. Romper la desconfianza del empresario en los primeros 5 minutos. Hablar su idioma: impuestos, inflación, costo de oportunidad.</p>
+        </div>
+        <div>
+          <div class="dialogue">
+            <span class="speaker">— Director Constructora Dos Uno</span>
+            <p>Bienvenidos, directores y dueños de negocio. Gracias por pasar los filtros de seguridad de nuestra constructora. Si están aquí, es porque comparten un problema común: <strong>sus empresas generan utilidades, pero mantener ese flujo de efectivo en cuentas bancarias o pagarés tradicionales es ver cómo la inflación real licúa su dinero mes con mes.</strong></p>
+            <p style="margin-top:15px">Peor aún, al cierre de año, la carga del Impuesto Sobre la Renta absorbe una tajada enorme de su esfuerzo. Hoy les voy a enseñar cómo usar el desarrollo residencial premium en Zapopan como un vehículo de multiplicación patrimonial y un escudo fiscal legítimo, <strong>delegando el 100% de la operación en nosotros.</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- MÓDULO 2 -->
+      <div class="module">
+        <div class="module-meta">
+          <div class="module-time">05:00 — 20:00</div>
+          <div class="module-num">II</div>
+          <h3 class="module-title">El Mito de la Tierra Muerta</h3>
+          <p class="module-desc">Demostración matemática de por qué dejar un terreno baldío es perder dinero. Cómo identificar terrenos con plusvalía acelerada en la ZMG. La fórmula del flipping inmobiliario seguro.</p>
+        </div>
+        <div>
+          <div class="dialogue">
+            <span class="speaker">— Director Constructora Dos Uno</span>
+            <p>Muchos creen que comprar un terreno y guardarlo 5 años es un gran negocio. <strong>Falso.</strong> La tierra sola genera plusvalía pasiva, pero mientras tu terreno sube un 8% anual, los insumos de construcción suben al doble. <strong>Dejar la tierra vacía es perder dinero.</strong></p>
+            <p style="margin-top:15px">El verdadero negocio inteligente para 2027 es la edificación acelerada. Vamos a demostrar numéricamente cómo transformar un terreno plano en un producto residencial de alta gama <strong>duplica el valor del activo en menos de 12 meses.</strong></p>
+            <p style="margin-top:15px">Y aquí viene la fórmula que nadie les ha explicado: <strong>Tierra + Obra Negra + Acabados Llave en Mano vs. Precio Final de Venta.</strong> El margen real de ganancia neta oscila entre el 20% y el 35%. No es especulación, es matemática inmobiliaria aplicada.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- MÓDULO 3 -->
+      <div class="module">
+        <div class="module-meta">
+          <div class="module-time">20:00 — 40:00</div>
+          <div class="module-num">III</div>
+          <h3 class="module-title">Ingeniería Fiscal y el Movimiento de Flujos</h3>
+          <p class="module-desc">Cómo transformar utilidades gravables en costos de obra deducibles. La ruta legal para bancarizar capitales. Facturación por fases de avance de obra. Tasa 0% de IVA en vivienda.</p>
+        </div>
+        <div>
+          <div class="dialogue">
+            <span class="speaker">— Director Constructora Dos Uno</span>
+            <p>Hablemos de negocios. <strong>La construcción es uno de los sectores más nobles para la optimización contable.</strong> Cuando tú desarrollas un proyecto residencial premium con Constructora Dos Uno, cada peso inyectado a la obra se convierte en un costo de infraestructura perfectamente comprobable y deducible de impuestos.</p>
+            <p style="margin-top:15px">Al entregar un proyecto Llave en Mano, el capital que antes iba a parar a pagos fiscales masivos, ahora está <strong>materializado en ladrillos, acabados residenciales y metros cuadrados</strong> que incrementan tu balance patrimonial de forma 100% legal y transparente ante el SAT.</p>
+            <p style="margin-top:15px">Nuestra estrategia no evade el impuesto; lo que hace es <strong>reducir tu utilidad gravable empresarial hoy mediante facturas de obra 100% deducibles.</strong> Convertimos un flujo que iba a ser gravado al 30% en un activo físico residencial que crece en plusvalía. Al momento de vender la propiedad, extraes tu capital original y tus ganancias bajo un régimen fiscal inmobiliario premium, pagando una fracción mínima de impuestos.</p>
+            <p style="margin-top:15px"><strong>En lugar de darle el 30% al SAT, lo usas para financiar tu propia obra y quedarte con la utilidad comercial.</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- MÓDULO 4 -->
+      <div class="module">
+        <div class="module-meta">
+          <div class="module-time">40:00 — 50:00</div>
+          <div class="module-num">IV</div>
+          <h3 class="module-title">El Modelo Manos Libres</h3>
+          <p class="module-desc">Absorción total del riesgo operativo. Licencias, trámites, IMSS, SIROC, sindicatos, notarios. El cliente solo firma y observa reportes ejecutivos semanales.</p>
+        </div>
+        <div>
+          <div class="dialogue">
+            <span class="speaker">— Director Constructora Dos Uno</span>
+            <p>Sé lo que están pensando: <em>"No tengo tiempo de lidiar con albañiles, arquitectos, sindicatos o vueltas al ayuntamiento."</em> Y tienen razón, su tiempo debe estar en operar sus empresas.</p>
+            <p style="margin-top:15px">Por eso, en Constructora Dos Uno no vendemos planos ni metros de varilla; <strong>vendemos un modelo de confianza absoluta.</strong></p>
+            <p style="margin-top:15px">Nosotros nos encargamos de todo de principio a fin. <strong>Gestión Legal y Municipal:</strong> tramitamos todo ante las dependencias. De hecho, bajo nuestra campaña actual, tu Licencia de Construcción es 100% Gratis en Zapopan, Guadalajara, Tlaquepaque y Tlajomulco para proyectos llave en mano desde 140 mt².</p>
+            <p style="margin-top:15px"><strong>Blindaje Laboral Absoluto:</strong> el mayor terror de un empresario en una obra son las auditorías del IMSS (SIROC/SATIC) y las demandas laborales. Al firmar con nosotros, nuestra constructora absorbe toda la responsabilidad patronal y legal de las cuadrillas. <strong>Tu nombre no aparece en ningún riesgo operativo.</strong> Tú solo firmas y observas el avance mediante reportes ejecutivos semanales.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- MÓDULO 5 -->
+      <div class="module">
+        <div class="module-meta">
+          <div class="module-time">50:00 — 60:00</div>
+          <div class="module-num">V</div>
+          <h3 class="module-title">El Cierre de Alta Conversión</h3>
+          <p class="module-desc">Llamado a la acción con escasez real. Solo 5 cupos corporativos por mes. Congelamiento de precios 2026. Licencia gratis. Sesión privada de diagnóstico patrimonial.</p>
+        </div>
+        <div>
+          <div class="dialogue">
+            <span class="speaker">— Director Constructora Dos Uno</span>
+            <p>Este modelo de negocio residencial no es para todos y nuestra capacidad operativa es limitada para mantener la calidad premium. Para los empresarios que tomarán acción inmediata de cara al arranque de proyectos 2027, <strong>abrimos únicamente 5 cupos corporativos este mes</strong> bajo los siguientes beneficios de cierre:</p>
+            <p style="margin-top:15px"><strong>Congelamiento de Costos de Construcción:</strong> aunque construyas en 2027, si firmas tu contrato de obra este mes, te garantizamos por contrato tarifas preferenciales desde $18,500 MXN por mt² Construido en esquema Llave en Mano, absorbiendo nosotros cualquier incremento de materiales de inicio de año.</p>
+            <p style="margin-top:15px"><strong>Cero Gastos de Arranque Burocrático:</strong> tu Licencia de Construcción corre por nuestra cuenta. Ahorro directo de miles de pesos y meses de vueltas.</p>
+            <p style="margin-top:15px">Para los que no tienen terreno: si tienes el capital listo pero no la tierra, esta semana nuestro departamento de corretaje inmobiliario te presentará <strong>un portafolio exclusivo de 3 lotes premium fuera de mercado</strong> con alta viabilidad legal en Zapopan, para que adquieras la tierra a tu nombre y arranquemos preventa de inmediato.</p>
+            <p style="margin-top:15px">Para reclamar uno de los 5 cupos de diagnóstico, dale clic al botón inferior. <strong>No vas a hablar con un vendedor; agendarás una sesión estratégica privada de 20 minutos directamente conmigo</strong> o con nuestro director financiero para evaluar tu situación fiscal, analizar tu predial o tu capacidad de capital, y entregarte una corrida financiera llave en mano.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FISCAL -->
+<section id="fiscal" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-tag">04 · Blindaje Fiscal</div>
+    <h2 class="section-title">Asesoría fiscal integrada. <em>Cada peso, documentado.</em></h2>
+    <p class="section-intro">Al construir con Constructora Dos Uno no solo obtienes ingenieros en la obra, obtienes un equipo que trabaja de la mano con tu contador o fiscalista. Tres mecanismos fiscales de corto plazo que tu contador validará de inmediato.</p>
+
+    <div class="fiscal-grid">
+      <div class="fiscal-card">
+        <div class="fiscal-icon">01</div>
+        <h4>Facturación por Fases de Avance</h4>
+        <p>En lugar de facturar todo al final, implementamos un calendario de estimaciones por avance de obra: Cimentación, Obra Negra, Obra Gris, Acabados.</p>
+        <p>Esto permite inyectar flujos y recibir facturas deducibles dentro del trimestre o año en curso, disminuyendo la utilidad fiscal de forma inmediata antes del cierre del ejercicio.</p>
+        <span class="tag">Deducción Inmediata</span>
+      </div>
+      <div class="fiscal-card">
+        <div class="fiscal-icon">02</div>
+        <h4>Tasa 0% de IVA en Vivienda</h4>
+        <p>De acuerdo con el Artículo 9 de la Ley del IVA, la enajenación de construcciones destinadas exclusivamente a casa habitación está exenta, y los servicios de construcción residencial pueden aplicar tasa 0% bajo ciertas condicionantes.</p>
+        <p>El capital invertido rinde al máximo, evitando saldos a favor atrapados o desembolsos innecesarios de IVA.</p>
+        <span class="tag">Art. 9 Ley IVA</span>
+      </div>
+      <div class="fiscal-card">
+        <div class="fiscal-icon">03</div>
+        <h4>Asociación en Participación (A en P)</h4>
+        <p>Si prefieres no mezclar el dinero directamente con tu empresa operativa, estructuramos un contrato de Asociación en Participación. Tú aportas el capital, el dueño de la tierra aporta el lote, nosotros el know-how y ejecución.</p>
+        <p>Las utilidades y flujos se distribuyen de forma transparente al finalizar la obra, optimizando el pago de impuestos individual.</p>
+        <span class="tag">Vehículo Legal</span>
+      </div>
+    </div>
+
+    <h3 style="font-size:32px;margin-top:100px;margin-bottom:10px">Conceptos de Facturación SAT</h3>
+    <p style="color:var(--text-dim);margin-bottom:30px">Claves del catálogo oficial del SAT que tu contador validará de inmediato como deducibles.</p>
+
+    <table class="sat-table">
+      <thead>
+        <tr>
+          <th>Fase</th>
+          <th>Clave SAT</th>
+          <th>Concepto Autorizado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="phase">1 · Ingeniería y Diseño</td>
+          <td><code>81101508</code></td>
+          <td class="desc">Servicios profesionales de diseño arquitectónico, ingeniería estructural y layouts técnicos para desarrollo habitacional premium.</td>
+        </tr>
+        <tr>
+          <td class="phase">1 · Estudios Técnicos</td>
+          <td><code>81151602</code></td>
+          <td class="desc">Estudios de mecánica de suelos, levantamiento topográfico y dictamen de viabilidad de terreno para cimentación residencial.</td>
+        </tr>
+        <tr>
+          <td class="phase">2 · Infraestructura</td>
+          <td><code>72141103</code></td>
+          <td class="desc">Estimación N°. 1 por concepto de trabajos de excavación, cimentación profunda y desplante de estructura principal.</td>
+        </tr>
+        <tr>
+          <td class="phase">2 · Obra Negra/Gris</td>
+          <td><code>72141103</code></td>
+          <td class="desc">Estimación N°. 2 correspondiente a trabajos de obra negra, levantamiento de muros, colado de losas y canalizaciones hidrosanitarias.</td>
+        </tr>
+        <tr>
+          <td class="phase">3 · Acabados</td>
+          <td><code>72151300</code></td>
+          <td class="desc">Servicios de colocación de acabados residenciales, carpintería fija, herrerías estructurales e instalaciones eléctricas.</td>
+        </tr>
+        <tr>
+          <td class="phase">3 · Entrega Llave en Mano</td>
+          <td><code>72141103</code></td>
+          <td class="desc">Finiquito de obra y entrega de proyecto habitacional llave en mano, de conformidad con el contrato de obra a precio alzado.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FILTRO -->
+<section id="filtro">
+  <div class="container">
+    <div class="section-tag">05 · Sistema de Admisión</div>
+    <h2 class="section-title">Exclusividad que <em>blinda</em> tu inversión.</h2>
+    <p class="section-intro">El acceso a la Masterclass es gratuito pero condicionado. Implementamos un filtro de admisión riguroso para asegurar que solo asistan dueños de terrenos reales e inversionistas con capital listo. Los competidores del ramo quedan fuera desde el primer formulario.</p>
+
+    <div class="filter-grid">
+      <div class="filter-card">
+        <div class="filter-profile">Perfil A · Dueño de Terreno</div>
+        <h3>Ya tienes la tierra. Vamos a activarla.</h3>
+        <p>Para liberar tu acceso gratuito, debes validar la propiedad del lote mediante uno de estos tres elementos:</p>
+        <ul class="filter-list">
+          <li>Captura de la Cuenta Predial Actualizada (Zapopan / Guadalajara)</li>
+          <li>Documento de Asignación o Deslinde de Lote en fraccionamiento privado</li>
+          <li>Ubicación Georreferenciada (Google Maps / ID de Manzana)</li>
+        </ul>
+      </div>
+
+      <div class="filter-card">
+        <div class="filter-profile">Perfil B · Inversionista de Capital</div>
+        <h3>Tienes el dinero. Nosotros encontramos la tierra.</h3>
+        <p>Para activar tu acceso, autorizas una llamada de validación de 3 minutos con nuestro comité de admisiones donde confirmas:</p>
+        <ul class="filter-list">
+          <li>Capital disponible para inversión (mínimo $3.5 MDP)</li>
+          <li>Zona residencial de interés en la ZMG</li>
+          <li>Origen del capital (excedente corporativo o personal)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:60px;padding:40px;background:var(--bg-2);border:1px solid var(--line);border-left:3px solid var(--gold)">
+      <p style="font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:15px">Mensaje de Bloqueo a Competencia</p>
+      <p style="font-style:italic;color:var(--text);line-height:1.7">"Para mantener la privacidad de las estrategias fiscales y comerciales de nuestros asistentes, el acceso gratuito requiere la validación de propiedad de un lote en la Zona Metropolitana de Guadalajara. Los registros con datos falsos o de empresas del sector construcción serán cancelados automáticamente."</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADOS -->
+<section id="resultados" style="background:var(--bg-2)">
+  <div class="container">
+    <div class="section-tag">06 · Resultados Esperados</div>
+    <h2 class="section-title">Lo que vas a lograr <em>en los próximos 90 días.</em></h2>
+    <p class="section-intro">Este cambio radical de estrategia no es una ocurrencia; es una decisión de negocios respaldada por la psicología del consumidor de alto nivel y la ingeniería fiscal mexicana. Estos son los impactos comerciales y financieros directos.</p>
+
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-num">01</div>
+        <h4>Cierres Más Rápidos</h4>
+        <p>Al eliminar curiosos desde el formulario, tu equipo solo habla con personas que sí tienen el dinero o el terreno. Menos llamadas, cierres de mayor valor.</p>
+      </div>
+      <div class="result-card">
+        <div class="result-num">02</div>
+        <h4>Estatus de Marca</h4>
+        <p>Dejas de ser un contratista que cotiza barato y te posicionas como un Club de Inversión Privado. Los directivos no quieren barato, quieren certeza.</p>
+      </div>
+      <div class="result-card">
+        <div class="result-num">03</div>
+        <h4>Liquidez Anticipada</h4>
+        <p>El gancho de "Congelar Precios 2026" obligará a firmar contratos y dar anticipos fuertes antes de que termine el año. Flujo operativo garantizado.</p>
+      </div>
+      <div class="result-card">
+        <div class="result-num">04</div>
+        <h4>Inversionistas Recurrentes</h4>
+        <p>Un cliente final te busca cada 20 años. Un inversionista que gana dinero contigo te contrata para 2, 3 o 5 proyectos consecutivos.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:80px;padding:50px;background:var(--bg);border:1px solid var(--line);text-align:center">
+      <p style="font-size:13px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px">La Transformación</p>
+      <p style="font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,36px);line-height:1.3;max-width:900px;margin:0 auto">
+        Pasamos de vender metros cuadrados a vender <em style="color:var(--gold);font-style:italic">paz mental, eficiencia fiscal y rendimientos financieros.</em>
+      </p>
+      <p style="color:var(--text-dim);margin-top:20px;font-size:14px">Ese es el secreto del éxito acelerado para Constructora Dos Uno.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section id="contacto" class="closing">
+  <div class="section-tag" style="justify-content:center">07 · El Siguiente Paso</div>
+  <h2>Deja de construir casas. <em>Empieza a construir patrimonio.</em></h2>
+  <p>Agenda tu sesión estratégica privada de 20 minutos con el Director de Constructora Dos Uno. Evaluamos tu situación fiscal, analizamos tu predial o capacidad de capital, y te entregamos una corrida financiera llave en mano.</p>
+  <a href="#" class="closing-cta">Solicitar Sesión Privada</a>
+  <p style="margin-top:30px;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-mute)">Solo 5 cupos corporativos disponibles por mes</p>
+</section>
+
+<footer>
+  <div class="logo">DOS UNO <span>/ CAPITAL</span></div>
+  <p>Constructora Dos Uno · Zapopan, Jalisco · MMXXVI</p>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {threshold:0.1});
+
+  document.querySelectorAll('.problem-card, .compare-col, .module, .fiscal-card, .filter-card, .result-card').forEach(el => {
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
+
+  // Smooth nav highlight
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 150;
+      if(scrollY >= top) current = sec.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.style.color = '';
+      if(link.getAttribute('href') === '#' + current){
+        link.style.color = 'var(--gold)';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
